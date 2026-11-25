@@ -854,8 +854,6 @@ if($('#stp'))$('#stp').textContent=fm(CFG.price2);
 (function(){const s=$('#sticky'),pl=$('#planos');if(!s)return;let past=false,inPl=false;const u=()=>s.classList.toggle('on',past&&!inPl);addEventListener('scroll',()=>{past=scrollY>600;u();},{passive:true});if('IntersectionObserver'in window)new IntersectionObserver(e=>{inPl=e[0].isIntersecting;u();},{threshold:0}).observe(pl);})();
 $('#ppl').textContent=CFG.people.toLocaleString('pt-BR');
 $$('.buy1').forEach(a=>a.href=CFG.checkout1);$$('.buy2').forEach(a=>a.href=CFG.checkout2);
-/* Registra o início do checkout ao clicar em um dos planos. */
-document.addEventListener('click',e=>{const link=e.target.closest('a.buy1,a.buy2');if(!link||typeof fbq!=='function')return;const premium=link.classList.contains('buy2');fbq('track','InitiateCheckout',{content_name:premium?'Gostosuras Completo':'Gostosuras Essencial',content_type:'product',value:premium?CFG.price2:CFG.price1,currency:'BRL'});},true);
 
 /* Carrossel de comidas: sobreposição suave, sem movimento lateral. */
 const FOOD_GALLERY={"intervalMs": 2000, "fadeMs": 650, "images": [{"top": "f4", "left": "f7", "right": "f1"}, {"top": "f12", "left": "f8", "right": "f9"}, {"top": "f5", "left": "f2", "right": "f3"}, {"top": "f11", "left": "f6", "right": "f10"}]};
